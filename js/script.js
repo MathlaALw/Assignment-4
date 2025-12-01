@@ -24,33 +24,46 @@ class Engineer extends Human {
         new Engineer("Sara Mohamed", 26, 2, "Frontend Engineer", "D-102", 750, "9:00 AM - 5:00 PM"),
         new Engineer("Omar Saleh", 32, 3, "Backend Engineer", "D-103", 900, "7:30 AM - 3:30 PM"),
         new Engineer("Laila Hassan", 30, 4, "Full Stack Engineer", "D-104", 950, "9:00 AM - 6:00 PM"),
-        new Engineer("Youssef Karim", 27, 5, "DevOps Engineer", "D-105", 850, "8:30 AM - 4:30 PM")
     ];
 
-// Display engineers in the HTML
-// get the container div
-let container = document.getElementById("engineers");
-// loop through engineers and create cards
-    engineers.forEach(engineer => {
-        // create a column div
-        let col = document.createElement("div");
-        // set bootstrap classes
-        col.className = "col-md-6 col-lg-4 mb-4";
-        // create card content
-        col.innerHTML = `
-            <div class="card h-100 "> 
-                <div class="card-body">
-                    <p class="card-text mb-1"><strong>Name:</strong>${engineer.name}</p>
-                    <p class="card-text mb-1 "><strong>Title:</strong> ${engineer.title}</p>
-                    <p class="card-text mb-1"><strong>Age:</strong> ${engineer.age}</p>
-                    <p class="card-text mb-1"><strong>Department ID:</strong> ${engineer.departmentId}</p>
-                    <p class="card-text mb-1"><strong>Salary:</strong> ${engineer.salary} OMR</p>
-                    <p class="card-text mb-0"><strong>Working Hours:</strong> ${engineer.workingHours}</p>
-                </div>
-            </div>
-        `;
 
-        // append the column to the container
+// Display engineers 
+let container = document.getElementById("engineer-info");
 
-        container.appendChild(col);
-    });
+engineers.forEach(engineer => {
+
+    // Create a wrapper div for each engineer
+    let card = document.createElement("div");
+    card.className = "engineer-card mb-4 p-3 border ";
+
+
+    // Create each line as <h3>
+    let name = document.createElement("h3");
+    name.textContent = "Name: " + engineer.name;
+
+    let title = document.createElement("h3");
+    title.textContent = "Title: " + engineer.title;
+
+    let age = document.createElement("h3");
+    age.textContent = "Age: " + engineer.age;
+
+    let dept = document.createElement("h3");
+    dept.textContent = "Department ID: " + engineer.departmentId;
+
+    let salary = document.createElement("h3");
+    salary.textContent = "Salary: " + engineer.salary + " OMR";
+
+    let hours = document.createElement("h3");
+    hours.textContent = "Working Hours: " + engineer.workingHours;
+
+    // Append all fields to the card
+    card.appendChild(name);
+    card.appendChild(title);
+    card.appendChild(age);
+    card.appendChild(dept);
+    card.appendChild(salary);
+    card.appendChild(hours);
+
+    // Append card to main div
+    container.appendChild(card);
+});
